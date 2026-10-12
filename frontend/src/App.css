@@ -1,0 +1,292 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f1f5f9;
+  color: #1e293b;
+}
+
+.navbar {
+  background: #172f50;
+  color: white;
+  padding: 18px 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  box-shadow: 0 3px 12px #0f172a15;
+}
+
+.navbar h2 {
+  margin: 0;
+  font-size: 25px;
+}
+
+.navbar span {
+  color: #dbeafe;
+  font-size: 15px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 35px auto;
+  padding: 0 24px;
+}
+
+.container > h1 {
+  margin: 0 0 10px;
+  color: #172f50;
+  font-size: 32px;
+}
+
+.container > p {
+  color: #64748b;
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  margin: 25px 0 32px;
+}
+
+.card {
+  background: white;
+  padding: 24px;
+  border-radius: 14px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 15px #0f172a08;
+}
+
+.card p {
+  margin: 0 0 12px;
+  color: #64748b;
+  font-size: 15px;
+}
+
+.card h2 {
+  margin: 0;
+  color: #0f766e;
+  font-size: 30px;
+}
+
+.form-section,
+.reports-section {
+  background: white;
+  padding: 28px;
+  border-radius: 14px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 15px #0f172a08;
+  margin-bottom: 28px;
+}
+
+.form-section {
+  max-width: 760px;
+}
+
+.form-section h2,
+.reports-section h2 {
+  color: #172f50;
+  font-size: 23px;
+  margin: 0 0 24px;
+}
+
+.form-section form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-section label {
+  display: block;
+  color: #334155;
+  font-weight: 600;
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.form-section input,
+.form-section select,
+.form-section textarea {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  padding: 12px 14px;
+  margin: 0 0 8px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #fff;
+  color: #1e293b;
+  font: inherit;
+  font-size: 14px;
+}
+
+.form-section input:focus,
+.form-section select:focus,
+.form-section textarea:focus {
+  outline: none;
+  border-color: #0f766e;
+  box-shadow: 0 0 0 3px #0f766e18;
+}
+
+.form-section textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.form-section button {
+  align-self: flex-start;
+  margin-top: 8px;
+  padding: 13px 22px;
+  background: #0f766e;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.form-section button:hover {
+  background: #115e59;
+}
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+  font-size: 14px;
+}
+
+th,
+td {
+  padding: 16px 14px;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+th {
+  background: #f1f5f9;
+  color: #334155;
+  font-weight: 600;
+}
+
+tbody tr:hover {
+  background: #f8fafc;
+}
+
+.status {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 20px;
+  background: #ccfbf1;
+  color: #115e59;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.error-message {
+  padding: 14px;
+  border-radius: 8px;
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+@media (max-width: 700px) {
+  .navbar {
+    padding: 16px 20px;
+  }
+
+  .navbar h2 {
+    font-size: 20px;
+  }
+
+  .navbar span {
+    font-size: 12px;
+    text-align: right;
+  }
+
+  .container {
+    margin: 25px auto;
+    padding: 0 16px;
+  }
+
+  .container > h1 {
+    font-size: 26px;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .form-section,
+  .reports-section {
+    padding: 20px;
+  }
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(15, 23, 42, 0.6);
+}
+
+.duplicate-modal {
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 28px;
+  border-radius: 16px;
+  background: white;
+  box-shadow: 0 20px 60px #00000030;
+}
+
+.duplicate-modal h2 {
+  margin-top: 0;
+  color: #172f50;
+}
+
+.duplicate-details {
+  padding: 12px 16px;
+  margin: 18px 0;
+  border-radius: 10px;
+  background: #f1f5f9;
+}
+
+.duplicate-details p {
+  margin: 9px 0;
+  overflow-wrap: anywhere;
+}
+
+.modal-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.secondary-button {
+  background: #2563eb !important;
+}
+
+.cancel-button {
+  background: #64748b !important;
+}
