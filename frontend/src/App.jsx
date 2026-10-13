@@ -11,8 +11,7 @@ import AdminPanel from './pages/AdminPanel'
 import Auth from './Auth'
 import './App.css'
 
-const API = 'http://localhost:8080/api'
-
+const API = 'https://roadwatch-an3w.onrender.com/api'
 export default function App() {
   const navigate = useNavigate()
   const [user, setUser] = useState(() => {

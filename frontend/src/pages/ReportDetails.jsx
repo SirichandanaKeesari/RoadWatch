@@ -11,7 +11,7 @@ export default function ReportDetails({ reports = [] }) {
   const [error, setError] = useState('')
 
   useEffect(() => {
-    axios.get(`http://localhost:8080/api/reports/${id}/comments`)
+   axios.get(`https://roadwatch-an3w.onrender.com/api/reports/${id}/comments`)
       .then(res => setComments(Array.isArray(res.data) ? res.data : []))
       .catch(() => setError('Comments could not be loaded.'))
   }, [id])

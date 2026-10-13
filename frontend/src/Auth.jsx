@@ -3,7 +3,7 @@ import { useState } from 'react'
 import axios from 'axios'
 import './Auth.css'
 
-const API_URL = 'http://localhost:8080/api/auth'
+const API_URL = 'https://roadwatch-an3w.onrender.com/api/auth'
 
 function Auth({ onLogin }) {
   const [isLogin, setIsLogin] = useState(true)
