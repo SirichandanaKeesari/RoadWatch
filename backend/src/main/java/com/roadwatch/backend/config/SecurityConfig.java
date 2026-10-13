@@ -37,21 +37,19 @@ public class SecurityConfig {
             .cors(Customizer.withDefaults())
             .csrf(csrf -> csrf.disable())
             .sessionManagement(session -> session
-                    .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
-                    .requestMatchers("/api/auth/**").permitAll()
-                    .requestMatchers("/error").permitAll()
-                    .anyRequest().authenticated())
+                .requestMatchers("/api/auth/**").permitAll()
+                .requestMatchers("/error").permitAll()
+                .anyRequest().authenticated())
             .httpBasic(basic -> basic.disable())
             .formLogin(form -> form.disable())
+            .exceptionHandling(ex -> ex
+                .authenticationEntryPoint(
+                    new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)))
             .addFilterBefore(
-                    jwtAuthenticationFilter,
-                    UsernamePasswordAuthenticationFilter.class);
-                    http.exceptionHandling(ex -> ex
-    .authenticationEntryPoint(
-        new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)
-    )
-);
+                jwtAuthenticationFilter,
+                UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
@@ -60,13 +58,21 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
 
-        config.setAllowedOrigins(List.of("http://localhost:5173"));
+        config.setAllowedOrigins(List.of(
+            "http://localhost:5173",
+            "https://road-watch-pa88.vercel.app"
+        ));
+
         config.setAllowedMethods(List.of(
-                "GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
+            "GET", "POST", "PUT", "PATCH",
+            "DELETE", "OPTIONS"
+        ));
+
         config.setAllowedHeaders(List.of("*"));
+        config.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source =
-                new UrlBasedCorsConfigurationSource();
+            new UrlBasedCorsConfigurationSource();
 
         source.registerCorsConfiguration("/**", config);
 
